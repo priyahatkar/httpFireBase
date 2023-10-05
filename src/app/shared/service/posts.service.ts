@@ -34,4 +34,21 @@ export class PostsService {
       })
     )
   }
+
+  getSinglePost(postId : string): Observable<Ipost>{
+    let singlePostUrl = `${environment.baseUrl}/posts/${postId}.json`;
+    return this._http.get<Ipost>(singlePostUrl)
+  }
+
+  updatePost(post : Ipost): Observable<Ipost>{
+    let singlePostUrl = `${environment.baseUrl}/posts/${post.id}.json`;
+    return this._http.patch<Ipost>(singlePostUrl, post)
+    // console.log(singlePostUrl);
+    
+  }
+
+  removePost(postId : string): Observable<any>{
+    let singlePostUrl = `${environment.baseUrl}/posts/${postId}.json`;
+    return this._http.delete(singlePostUrl)
+  }
 }

@@ -1,7 +1,7 @@
 
 <div class="row">
     <div class="col-md-8 offset-md-2">
-        <div class="card mt-5" *ngFor="let post of allPosts">
+        <div class="card mt-5" *ngFor="let post of allPosts" [id]="post.id">
             <div class="card-header">
                 <h3>{{post.title}}</h3>
             </div>
@@ -10,8 +10,9 @@
             </div>
             <div class="card-footer">
                 <div class="text-right d-flex justify-content-around">
-                    <button class="btn btn-outline-primary">Edit</button>
-                    <button class="btn btn-outline-danger">Delete</button>
+                    <button class="btn btn-outline-primary" 
+                    [routerLink]="['/posts', post.id, 'edit']">Edit</button>
+                    <button class="btn btn-outline-danger" (click)="onRemovePost(post.id)">Delete</button>
                 </div>
             </div>
         </div>

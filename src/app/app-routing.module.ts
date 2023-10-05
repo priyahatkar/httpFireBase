@@ -19,7 +19,7 @@ const routes: Routes = [
     path : 'posts/:id', component : PostComponent
   },
   {
-    path : 'posts/:id/edit', component : PostFormComponent
+    path : 'posts/:postId/edit', component : PostFormComponent
   },
   {
     path :'pageNotFound', component : PageNotFoundComponent

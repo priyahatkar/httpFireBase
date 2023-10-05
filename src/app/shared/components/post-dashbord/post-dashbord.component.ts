@@ -19,5 +19,15 @@ export class PostDashbordComponent implements OnInit {
       })
   }
 
-
+  onRemovePost(postId : string){
+    let getConfirm = confirm(`Are you sure ? you want to remove this post`);
+    if(getConfirm){
+      document.getElementById(postId)?.remove()
+      this._postService.removePost(postId)
+      .subscribe(res => console.log(res)
+      )
+    }else{
+      return
+    }
+  }
 }
