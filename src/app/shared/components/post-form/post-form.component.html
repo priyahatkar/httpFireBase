@@ -3,10 +3,20 @@
     <div class="form-group">
         <label for="title">Title</label>
         <input type="text" formControlName="title" id='title' class="form-control">
+        <ng-container *ngIf="postForm.controls['title'].touched && postForm.controls['title'].invalid">
+            <p class="alert alert-danger" *ngIf="postForm.controls['title'].hasError('required')">
+                Title is required
+            </p>
+        </ng-container>
     </div>
     <div class="form-group">
         <label for="content">Content</label>
         <textarea rows="4" type="text" formControlName="content" id='content' class="form-control"></textarea>
+        <ng-container *ngIf="postForm.controls['content'].touched && postForm.controls['title'].invalid">
+            <p class="alert alert-danger" *ngIf="postForm.controls['content'].hasError('required')">
+                Content is mandatory field
+            </p>
+        </ng-container>
     </div>
     <div class="form-group">
         <label for="userId">UserId</label>
@@ -14,9 +24,14 @@
             <option value="">Select UserId</option>
             <option [value]="val" *ngFor="let val of userIdArray">{{val}}</option>
         </select>
+        <ng-container *ngIf="postForm.controls['userId'].touched && postForm.controls['title'].invalid">
+            <p class="alert alert-danger" *ngIf="postForm.controls['content'].hasError('required')">
+                UserId is mandatory field
+            </p>
+        </ng-container>
     </div>
     <div class="text-right">
-        <button class="btn btn-info" *ngIf="isInEditMode" (click)="onPostUpdate()">Update Post</button>
-        <button class="btn btn-info" *ngIf="!isInEditMode">Add Post</button>
+        <button class="btn btn-info" *ngIf="isInEditMode" (click)="onPostUpdate()" type="button">Update Post</button>
+        <button class="btn btn-info" *ngIf="!isInEditMode" type="submit">Add Post</button>
     </div>
 </form>

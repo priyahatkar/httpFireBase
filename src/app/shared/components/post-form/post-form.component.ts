@@ -44,16 +44,13 @@ export class PostFormComponent implements OnInit {
   onPostCreate(){
     if(this.postForm.valid){
       let obj : Ipost = this.postForm.value;
-      // console.log(obj);
       this._postService.createPost(obj)
       .subscribe(res =>{
-        // console.log(res);
         this._router.navigate(['/'])
       })
     }
   }
   onPostUpdate(){
-    // console.log(this.postForm.value);
     let post : Ipost = {
       ...this.postForm.value,
       id : this.editPostId
